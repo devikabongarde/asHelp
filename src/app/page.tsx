@@ -168,9 +168,11 @@ export default function BackgroundBoxesDemo() {
         </div>
       </section>
       {/* End 3 Steps Section */}
-      <TestimonialMarquee/>
+      <div className="relative z-10">
+        <TestimonialMarquee/>
+      </div>
       {/* Made by and Copyright */}
-      <footer className="w-full flex flex-col items-center justify-center py-6 text-center text-xs text-gray-400">
+      <footer className="relative z-10 w-full flex flex-col items-center justify-center py-6 text-center text-xs text-gray-400">
         
         <div className="mt-1">Copyright &copy; {new Date().getFullYear()} asshelp All rights reserved.</div>
       </footer>

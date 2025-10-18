@@ -38,7 +38,16 @@ export function NavbarDemo() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [visible, setVisible] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY > 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const getUser = async () => {
@@ -63,7 +72,7 @@ export function NavbarDemo() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <GitHubStarsButton username="kris70lesgo" repo="s1" />
+            <GitHubStarsButton username="kris70lesgo" repo="s1" isScrolled={visible} />
             {user === null && (
               <NavbarButton variant="secondary" onClick={() => router.push('/sign')}>Login</NavbarButton>
             )}
